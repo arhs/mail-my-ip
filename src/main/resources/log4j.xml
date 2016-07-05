@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<!-- Log4j Configuration file to log the messages into different logfiles -->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  <!-- Global Log appender -->
+  <!--<appender name="IP_MAILER_FILE" class="org.apache.log4j.rolling.RollingFileAppender">
+    <param name="file" value="c:/ip-mailer.log" />
+    <param name="append" value="true" />
+    <param name="encoding" value="UTF-8" />
+    <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+      <param name="FileNamePattern" value="c:/ip-mailer.log.%d" />
+    </rollingPolicy>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{yyyy\-MM\-dd HH\:mm\:ss} [%t] %-5p %c - %m%n" />
+    </layout>
+  </appender>
+  <appender name="IP_MAILER_FILE_ASYNC" class="org.apache.log4j.AsyncAppender">
+    <appender-ref ref="IP_MAILER_FILE" />
+  </appender>-->
+  <!-- Console Log appender -->
+  <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{ISO8601}|%-5p|%c|%m%n" />
+    </layout>
+  </appender>
+  <appender name="CONSOLE_ASYNC" class="org.apache.log4j.AsyncAppender">
+    <appender-ref ref="CONSOLE" />
+  </appender>
+  <logger name="org.apache.commons">
+    <level value="warn" />
+  </logger>
+  <logger name="org.quartz">
+    <level value="warn" />
+  </logger>
+  <root>
+    <priority value="WARN" />
+    <appender-ref ref="CONSOLE_ASYNC" />
+    <!--<appender-ref ref="IP_MAILER_FILE_ASYNC" />-->
+  </root>
+</log4j:configuration>
