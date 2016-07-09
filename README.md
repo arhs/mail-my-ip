@@ -3,19 +3,19 @@
 This tool checks a mailbox and search for email send form it. Send it send back the list of active interface with their associated IPs as answers.
 
 ## Behavior
-The tool search for email containing in subject the part *IP Mailer give me * followed by the hostname on which the service is running in the **global inbox**:
+The tool searches for emails containing in subject the part *IP Mailer give me* followed by the hostname on which the service is running in the **global inbox**:
 
-- Matching email will be move to dedicated inbox folder.
-- Non-matching emails will be move to **global archive** folder to prevent handling them again.
+- Matching email will be moved to dedicated inbox folder.
+- Non-matching emails will be moved to **global archive** folder to prevent handling them again.
 
 The tool will after search for emails in **dedicated inbox** :
-> Please note that due to some IMAP lags while moving between folders, such email could only be handled on next execution.
+> Please note that, due to some IMAP lags while moving between folders, such emails could only be handled on next execution.
 
 - Matching email will be handled in the following way:
   - Email is for the host, an answer will be provided as attended. 
   - Email if not for the host, email will be avoided in order to allow other tools to handle it them-self.
   - Email is older than one hour, it will be moved to **dedicated archive** folder to prevent handling them again as they are unattended.
-- Non-matching emails will be move to **dedicated archive** folder to prevent handling them again as they are unattended.
+- Non-matching emails will be moved to **dedicated archive** folder to prevent handling them again as they are unattended.
 
 ## Configuration
 Configuration can either be done by changing the properties files or by using the *--* parameter on command line.
@@ -32,7 +32,7 @@ Configuration variables are:
 * ipmailer.folder-dedicated-archive *(String)* The dedicated archive folder When a email request has been handled, it is moved here
 * ipmailer.strategyMaxEmailToPoll *(int)* Max number of email to handle on each iteration
 
-Some additional configuration:
+Some additional configuration properties:
 
 * spring.mail.imap.ssl.trust
 * spring.mail.imap.starttls.enable=false
